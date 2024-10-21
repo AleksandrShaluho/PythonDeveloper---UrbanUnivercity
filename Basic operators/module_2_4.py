@@ -3,18 +3,47 @@ Primes = []
 NotPrimes = []
 IsPrime = False
 
-# метод перебора делителей
-for i in Numbers:
-    if i > 1:
-        for j in range(2, i + 1):
-            if j * j <= i and IsPrime == False:
-                if i % j == 0:
-                    IsPrime = True
-            elif IsPrime==False:
-                Primes.append(i)
+# критерии простого числа n:
+# - n > 1
+# ни при каком значении числа j из диапазона 1 < j < n не обеспечивается выполнение условия n % j == 0
+
+# Простой способ - перебираем все j из диапазона. Если не получили деления без остатка, значит простое число.
+# Правда, в этот способ не укладывается число 2...
+# Пишем сразу в списки. Полезной роли для флагов здесь не увидел.
+for n in Numbers:
+    # отсекаем ни простые ни составные, обрабатываем только натуральные больше 1.
+    if n > 1:
+        if n == 2:
+            Primes.append(n)
+        # пробегаем по диапазону допустимых значений j в поисках делителя
+        for j in range(2, n):
+            if n % j == 0:
+                NotPrimes.append(n)
                 break
-            else:
-                NotPrimes.append(i)
+            if j == n - 1:
+                Primes.append(n)
+print("Primes: ", Primes)
+print("NotPrimes: ", NotPrimes)
+
+# Более сложный алгоритм. Введем доп. условие. Искомый делитель (если составное число) не может быть больше
+# квадратного корня числа n (это следует из свойств простых и составных чисел). Т.е. j*j<=n
+# такой алгоритм справится с задачей быстрее
+# обнулим списки
+Primes = []
+NotPrimes = []
+
+for n in Numbers:
+    if n > 1:
+        # Подразумеваем, что по умолчанию число простое и мы ищем не является ли оно составным. Найдем делитель, сменим флаг
+        IsPrime = True
+        # граница цикла - квадратный корень исходного числа
+        for i in range(2, int(n ** 0.5) + 1):
+            if n % i == 0:
+                IsPrime = False
                 break
-print(Primes)
-print(NotPrimes)
+        if IsPrime:
+            Primes.append(n)
+        else:
+            NotPrimes.append(n)
+print("Primes: ", Primes)
+print("NotPrimes: ", NotPrimes)
