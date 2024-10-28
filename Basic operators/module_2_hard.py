@@ -1,12 +1,7 @@
-# условие задачи кратко для себя
-# 3<=n<=20
-# слагаемых - 2
-# слагаемое (m): 1<=m<n
-# n%(m1+m2)==0
-
 #надоело вводить числа руками) Пусть за меня работает компьютер)
 import random
 
+# функция определения второго ключа
 def GetSecondKey(FirstKey):
     SecondKey=''
     i=1
@@ -17,7 +12,7 @@ def GetSecondKey(FirstKey):
                SecondKey+=(str(i)+str(j))
         i+=1
     return SecondKey
-
+#функция которая выводит значения конкретной пары ключей и проверяет верность второго ключа
 def PutInKeys(FirstKey, SecondKey):
     print(f'FirstKey is: {FirstKey}. SecondKey is: {SecondKey}')
     print('Checking your keys...')
@@ -25,7 +20,7 @@ def PutInKeys(FirstKey, SecondKey):
         print("Welcome, stranger! I don't know how but you've done it..")
     else:
         print("Keys incorrorect! You'll DIE there...A-HA-HA-HA!!!!")
-
+#функция проверки верности второго ключа. Все пары ключей переписаны из условия задачи в словарь
 def IsKeysValid(FirstKey,SecondKey):
     KeysStorage = {3:'12',
                    4:'13',
@@ -50,6 +45,6 @@ def IsKeysValid(FirstKey,SecondKey):
         return True
     else:
         return False
-
+#собственно программа, использующая заранее описанные функции
 FirstKey = random.randint(3,20)
 PutInKeys(FirstKey,GetSecondKey(FirstKey))
