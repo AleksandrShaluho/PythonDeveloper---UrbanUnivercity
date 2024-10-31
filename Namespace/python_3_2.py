@@ -1,5 +1,5 @@
 def SendEmail(message, recipient, *, sender="university.help@gmail.com"):
-    domains=['.ru','.com','.net']
+    domains = ['.ru', '.com', '.net']
     if all(domain not in sender for domain in domains) or '@' not in sender:
         print(f'Невозможно отправить письмо с адреса {sender} на адрес {recipient}')
         return
