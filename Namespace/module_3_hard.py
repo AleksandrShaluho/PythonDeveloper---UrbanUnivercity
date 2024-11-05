@@ -1,7 +1,9 @@
 # нужна рекурсивная функция с условиями определяющими заход во вложенные структуры
 def CalculateStructureSum(DataStructure):
   for each in DataStructure:
-    if isinstance(each,dict)
+    SubList = list(each)
+    if isinstance(each,SubList):
+      break
 
 DataStructure = [
   [1, 2, 3],
@@ -12,3 +14,4 @@ DataStructure = [
 ]
 
 print(CalculateStructureSum(DataStructure))
+#print(list(DataStructure))
