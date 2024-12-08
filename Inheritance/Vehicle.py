@@ -1,7 +1,7 @@
 class Vehicle:
     __COLOR_VARIANTS = ['blue', 'red', 'green', 'black', 'white']
 
-    def __init__(self, owner,model, engine, color):
+    def __init__(self, owner, model, engine, color):
         self.owner = owner
         self.__model = model
         self.__engine_power = engine
@@ -22,10 +22,8 @@ class Vehicle:
         print(self.get_color())
         print(f'Владелец: {self.owner}')
 
-    def set_color(self,new_color):
+    def set_color(self, new_color):
         if new_color.lower() not in self.__COLOR_VARIANTS:
             print(f'Нельзя сменить цвет на {new_color}')
         else:
-            self.__color=new_color.lower()
-
-
+            self.__color = new_color.lower()
