@@ -9,7 +9,7 @@ def elapsed_time(func):
         start_time = datetime.datetime.now()
         result = func(*args, **kwargs)
         finish_time = datetime.datetime.now()
-        print(f'Время выполнения задачи: {str(finish_time - start_time)}')
+        print(f'Время выполнения задачи: {finish_time - start_time}')
         return result
 
     return wrapper
