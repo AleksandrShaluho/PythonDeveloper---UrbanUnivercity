@@ -31,8 +31,9 @@ class Tournament:
         while self.participants:
             for participant in self.participants:
                 participant.run()
+                # original block
                 if participant.distance >= self.full_distance:
-                    finishers[place] = participant
+                    finishers[place] = participant.name
                     place += 1
                     self.participants.remove(participant)
 
