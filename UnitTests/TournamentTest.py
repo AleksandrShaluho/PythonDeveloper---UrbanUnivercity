@@ -14,21 +14,21 @@ class TournamentTest(unittest.TestCase):
         self.runner_2 = rt.Runner('Andrew', 2)
         self.runner_3 = rt.Runner('Nick', 15)
 
-    @unittest.skipIf(is_frozen == True, 'Tests in this tests case have been frozen')
+    @unittest.skipIf(is_frozen, 'Tests in this tests case have been frozen')
     def test_round_1(self):
         tournament = rt.Tournament(10, self.runner_1, self.runner_2, self.runner_3)
         results = tournament.start()
         self.all_results['test_1'] = results
         self.assertTrue(results[max(results)] == 'Andrew')
 
-    @unittest.skipIf(is_frozen == True, 'Tests in this tests case have been frozen')
+    @unittest.skipIf(is_frozen, 'Tests in this tests case have been frozen')
     def test_round_2(self):
         tournament = rt.Tournament(90, self.runner_2, self.runner_3)
         results = tournament.start()
         self.all_results['test_2'] = results
         self.assertTrue(results[max(results)] == 'Andrew')
 
-    @unittest.skipIf(is_frozen == True, 'Tests in this tests case have been frozen')
+    @unittest.skipIf(is_frozen, 'Tests in this tests case have been frozen')
     def test_round_3(self):
         tournament = rt.Tournament(5200, self.runner_1, self.runner_2)
         results = tournament.start()
